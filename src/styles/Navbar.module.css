@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  height: 100px;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+}
+
+.navLogo {
+  color: #904a42;
+  font-size: 45px;
+  line-height: 52px;
+  margin-left: 50px;
+}
+
+.navbar {
+  width: 35vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.linkNav {
+  line-height: 32px;
+  font-size: 24px;
+  text-decoration: none;
+  color: #231918;
+}
+
+.rightHeaderMenu {
+  color: #231918;
+  display: flex;
+  align-items: center;
+  width: 10vw;
+  justify-content: space-between;
+  margin-right: 50px;
+}
+
+.login {
+  font-size: 16px;
+  letter-spacing: 0.15px;
+  line-height: 24px;
+}
