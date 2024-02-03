@@ -20,7 +20,15 @@ const ProductCards = () => {
   }, []);
 
   function handleClick(e) {
-    console.log(e.target);
+    if (e.target.tagName === "INPUT" || e.target.tagName === "BUTTON") {
+      return;
+    }
+    let target = e.target;
+    while (!target.id) {
+      target = target.parentNode;
+    }
+
+    console.log(target.id);
   }
 
   const cards = productData.map((item) => {
