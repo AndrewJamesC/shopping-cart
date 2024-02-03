@@ -1,9 +1,10 @@
+import ProductCards from "./ProductCards";
 import styles from "../styles/Home.module.css";
 import headphonesHero from "../assets/images/headphones-hero.png";
 
 const Home = () => {
   return (
-    <div>
+    <div className={styles.homeContainer}>
       <div className={styles.heroImageContainer}>
         <img
           className={styles.heroImg}
@@ -26,6 +27,8 @@ const Home = () => {
           Shop By Category
         </button>
       </div>
+      <h2 className={styles.bestSellers}>Best Sellers</h2>
+      <ProductCards />
     </div>
   );
 };

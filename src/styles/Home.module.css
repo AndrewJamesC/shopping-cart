@@ -1,12 +1,20 @@
+.homeContainer {
+  font-family: "Roboto", sans-serif;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
 .heroImageContainer {
   position: relative;
-
+  min-width: 750px;
   background-color: #ffdad5;
   width: 80vw;
   height: 55vh;
-  margin: 0 10vw;
+  margin: 2px 10vw;
   border-radius: 30px;
-  font-family: "Roboto", sans-serif;
 }
 
 .heroTitleTextContainer {
@@ -81,4 +89,8 @@
   position: absolute;
   left: 15%;
   bottom: 15%;
+}
+
+.bestSellers {
+  font-size: 45px;
 }
