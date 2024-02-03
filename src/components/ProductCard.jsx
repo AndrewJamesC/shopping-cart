@@ -2,7 +2,11 @@ import styles from "../styles/ProductCard.module.css";
 import PropTypes from "prop-types";
 const ProductCard = (props) => {
   return (
-    <div className={styles.card}>
+    <div
+      id={props.id}
+      onClick={(e) => props.handleClick(e)}
+      className={styles.card}
+    >
       <img
         className={styles.cardImg}
         src={props.imgUrl}
@@ -34,6 +38,8 @@ ProductCard.propTypes = {
   imgUrl: PropTypes.string,
   title: PropTypes.string,
   price: PropTypes.number,
+  id: PropTypes.number,
+  handleClick: PropTypes.func,
 };
 
 export default ProductCard;
