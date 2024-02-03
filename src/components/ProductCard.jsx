@@ -1,5 +1,5 @@
 import styles from "../styles/ProductCard.module.css";
-
+import PropTypes from "prop-types";
 const ProductCard = (props) => {
   return (
     <div className={styles.card}>
@@ -28,6 +28,12 @@ const ProductCard = (props) => {
       </div>
     </div>
   );
+};
+
+ProductCard.propTypes = {
+  imgUrl: PropTypes.string,
+  title: PropTypes.string,
+  price: PropTypes.number,
 };
 
 export default ProductCard;
