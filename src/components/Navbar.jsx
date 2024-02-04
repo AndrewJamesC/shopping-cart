@@ -1,6 +1,7 @@
 import cartImg from "../assets/images/cart.svg";
 import searchImg from "../assets/images/search.svg";
 import styles from "../styles/Navbar.module.css";
+import { Link } from "react-router-dom";
 
 // Connect navbar links to website pages
 const Navbar = () => {
@@ -8,9 +9,9 @@ const Navbar = () => {
     <header className={styles.header}>
       <div className={styles.navLogo}>Sonic Aura</div>
       <nav className={styles.navbar}>
-        <a className={styles.linkNav} href="">
+        <Link className={styles.linkNav} to="/">
           Home
-        </a>
+        </Link>
         <a className={styles.linkNav} href="">
           Shop
         </a>

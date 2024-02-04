@@ -1,4 +1,6 @@
 import styles from "../styles/ProductCard.module.css";
+import { Link } from "react-router-dom";
+
 import PropTypes from "prop-types";
 const ProductCard = (props) => {
   return (
@@ -7,11 +9,13 @@ const ProductCard = (props) => {
       onClick={(e) => props.handleClick(e)}
       className={styles.card}
     >
-      <img
-        className={styles.cardImg}
-        src={props.imgUrl}
-        alt={"Image of " + props.title}
-      />
+      <Link to="/product">
+        <img
+          className={styles.cardImg}
+          src={props.imgUrl}
+          alt={"Image of " + props.title}
+        />
+      </Link>
       <div className={styles.cardInfo}>
         <div className={styles.cardTitle}>{props.title}</div>
         <div className={styles.cardPrice}>{"$" + props.price}</div>
