@@ -1,8 +1,9 @@
 import ProductCards from "./ProductCards";
+import PropTypes from "prop-types";
 import styles from "../styles/Home.module.css";
 import headphonesHero from "../assets/images/headphones-hero.png";
 
-const Home = () => {
+const Home = ({ handleClick }) => {
   return (
     <div className={styles.homeContainer}>
       <div className={styles.heroImageContainer}>
@@ -28,9 +29,13 @@ const Home = () => {
         </button>
       </div>
       <h2 className={styles.bestSellers}>Best Sellers</h2>
-      <ProductCards />
+      <ProductCards handleClick={(e) => handleClick(e)} />
     </div>
   );
+};
+
+Home.propTypes = {
+  handleClick: PropTypes.func,
 };
 
 export default Home;

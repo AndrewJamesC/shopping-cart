@@ -1,7 +1,8 @@
 import ProductCard from "./ProductCard";
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import styles from "../styles/ProductCards.module.css";
-const ProductCards = () => {
+const ProductCards = ({ handleClick }) => {
   const [productData, setProductData] = useState([]);
 
   const fetchData = async () => {
@@ -19,18 +20,6 @@ const ProductCards = () => {
     fetchData();
   }, []);
 
-  function handleClick(e) {
-    if (e.target.tagName === "INPUT" || e.target.tagName === "BUTTON") {
-      return;
-    }
-    let target = e.target;
-    while (!target.id) {
-      target = target.parentNode;
-    }
-
-    console.log(target.id);
-  }
-
   const cards = productData.map((item) => {
     return (
       <ProductCard
@@ -45,6 +34,10 @@ const ProductCards = () => {
   });
 
   return <div className={styles.cardsContainer}>{cards}</div>;
+};
+
+ProductCards.propTypes = {
+  handleClick: PropTypes.func,
 };
 
 export default ProductCards;
