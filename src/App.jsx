@@ -7,6 +7,7 @@ import "./App.css";
 
 function App() {
   const [clickedProductId, setClickedProductId] = useState("");
+  const [cartCount, setCartCount] = useState(0);
 
   function handleClick(e) {
     if (e.target.tagName === "INPUT" || e.target.tagName === "BUTTON") {
@@ -19,13 +20,26 @@ function App() {
 
     setClickedProductId(target.id);
   }
+
+  function increaseCartCount(quantitySelected) {
+    console.log("app " + quantitySelected);
+    setCartCount((prevCount) => prevCount + Number(quantitySelected));
+    console.log(cartCount + " cart count");
+  }
   return (
     <>
-      <Navbar />
+      <Navbar cartCount={cartCount} />
       <Routes>
         <Route
           path="/"
-          element={<Home handleClick={(e) => handleClick(e)} />}
+          element={
+            <Home
+              handleClick={(e) => handleClick(e)}
+              increaseCartCount={(quantitySelected) =>
+                increaseCartCount(quantitySelected)
+              }
+            />
+          }
         />
         <Route path="product" element={<ProductPage id={clickedProductId} />} />
       </Routes>

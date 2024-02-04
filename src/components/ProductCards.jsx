@@ -2,7 +2,7 @@ import ProductCard from "./ProductCard";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import styles from "../styles/ProductCards.module.css";
-const ProductCards = ({ handleClick }) => {
+const ProductCards = ({ handleClick, increaseCartCount }) => {
   const [productData, setProductData] = useState([]);
 
   const fetchData = async () => {
@@ -29,6 +29,9 @@ const ProductCards = ({ handleClick }) => {
         title={item.title}
         price={item.price}
         handleClick={(e) => handleClick(e)}
+        increaseCartCount={(quantitySelected) =>
+          increaseCartCount(quantitySelected)
+        }
       />
     );
   });
@@ -38,6 +41,7 @@ const ProductCards = ({ handleClick }) => {
 
 ProductCards.propTypes = {
   handleClick: PropTypes.func,
+  increaseCartCount: PropTypes.func,
 };
 
 export default ProductCards;

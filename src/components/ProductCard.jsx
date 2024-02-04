@@ -1,8 +1,14 @@
 import styles from "../styles/ProductCard.module.css";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import PropTypes from "prop-types";
 const ProductCard = (props) => {
+  const [quantitySelected, setQuantitySelected] = useState(0);
+
+  function handleQuantityChange(e) {
+    setQuantitySelected(Number(e.target.value));
+  }
   return (
     <div
       id={props.id}
@@ -29,8 +35,13 @@ const ProductCard = (props) => {
           min="0"
           max="99"
           defaultValue={0}
+          onChange={(e) => handleQuantityChange(e)}
         />
-        <button className={styles.addToCartBtn} type="button">
+        <button
+          className={styles.addToCartBtn}
+          type="button"
+          onClick={() => props.increaseCartCount(quantitySelected)}
+        >
           Add to cart
         </button>
       </div>
@@ -44,6 +55,7 @@ ProductCard.propTypes = {
   price: PropTypes.number,
   id: PropTypes.number,
   handleClick: PropTypes.func,
+  increaseCartCount: PropTypes.func,
 };
 
 export default ProductCard;
