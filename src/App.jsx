@@ -3,11 +3,13 @@ import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import ProductPage from "./components/ProductPage";
+import Cart from "./components/Cart";
 import "./App.css";
 
 function App() {
   const [clickedProductId, setClickedProductId] = useState("");
   const [cartCount, setCartCount] = useState(0);
+  const [cartClicked, setCartClicked] = useState(false);
 
   function handleClick(e) {
     if (e.target.tagName === "INPUT" || e.target.tagName === "BUTTON") {
@@ -26,9 +28,14 @@ function App() {
     setCartCount((prevCount) => prevCount + Number(quantitySelected));
     console.log(cartCount + " cart count");
   }
+
+  function handleCartClick() {
+    setCartClicked((prevState) => !prevState);
+  }
   return (
     <>
-      <Navbar cartCount={cartCount} />
+      <Navbar cartCount={cartCount} handleCartClick={handleCartClick} />
+      {cartClicked && <Cart />}
       <Routes>
         <Route
           path="/"

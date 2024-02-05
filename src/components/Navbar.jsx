@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 // Connect navbar links to website pages
-const Navbar = ({ cartCount }) => {
+const Navbar = ({ cartCount, handleCartClick }) => {
   return (
     <header className={styles.header}>
       <div className={styles.navLogo}>Sonic Aura</div>
@@ -29,7 +29,7 @@ const Navbar = ({ cartCount }) => {
       <div className={styles.rightHeaderMenu}>
         <div className="login">login</div>
         <img src={searchImg} alt="Search icon" />
-        <div className={styles.cartContainer}>
+        <div className={styles.cartContainer} onClick={() => handleCartClick()}>
           <img src={cartImg} alt="Cart icon" />
           {cartCount > 0 && <div className={styles.badge}>{cartCount}</div>}
         </div>
@@ -40,6 +40,7 @@ const Navbar = ({ cartCount }) => {
 
 Navbar.propTypes = {
   cartCount: PropTypes.number,
+  handleCartClick: PropTypes.func,
 };
 
 export default Navbar;
