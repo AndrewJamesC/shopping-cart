@@ -3,11 +3,27 @@ import searchImg from "../assets/images/search.svg";
 import styles from "../styles/Navbar.module.css";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { useState, useEffect } from "react";
 
 // Connect navbar links to website pages
 const Navbar = ({ cartCount, handleCartClick }) => {
+  const [sticky, setSticky] = useState(false);
+
+  const handleScroll = () => {
+    const offset = window.scrollY;
+    if (offset > 200) {
+      setSticky(true);
+    } else {
+      setSticky(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  });
+
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${sticky ? styles.sticky : ""}`}>
       <div className={styles.navLogo}>Sonic Aura</div>
       <nav className={styles.navbar}>
         <Link className={styles.linkNav} to="/">
