@@ -10,14 +10,20 @@ const Cart = ({ cartContents }) => {
         <img src={item.image} alt={item.title} />
         <p>{item.quantity}</p>
         <p>{item.price}</p>
-        <p>{"$" + item.subtotal}</p>
+        <p>{"$" + item.subTotal}</p>
       </div>
     );
   });
+
+  let calculatedSubtotal = 0;
+  cartContents.forEach((element) => {
+    calculatedSubtotal += element.subTotal;
+  });
+  console.log(calculatedSubtotal + "clst");
   return (
     <div className={styles.cartContainer}>
       {cartItems}
-      <p className={styles.cartSubtotal}>{`Subtotal: `}</p>
+      <p className={styles.cartSubtotal}>{`Subtotal: ${calculatedSubtotal}`}</p>
       <button className={styles.checkoutButton} type="button">
         Checkout
       </button>
