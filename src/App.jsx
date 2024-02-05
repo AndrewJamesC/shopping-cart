@@ -29,6 +29,10 @@ function App() {
     while (!target.id) {
       target = target.parentNode;
     }
+
+    if (quantitySelected === 0) {
+      return;
+    }
     const addedProductInfo = target.children;
     const addedProductTitle = addedProductInfo[1].firstElementChild.innerHTML;
     const addedProductImage = addedProductInfo[0].firstElementChild.src;

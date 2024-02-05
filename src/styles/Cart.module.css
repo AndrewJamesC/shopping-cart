@@ -1,5 +1,6 @@
 .cartContainer {
-  height: fit-content;
+  height: 91vh;
+  overflow: auto;
   width: 20vw;
   background-color: white;
   position: fixed;
