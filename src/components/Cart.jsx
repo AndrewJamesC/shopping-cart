@@ -13,8 +13,8 @@ const Cart = ({ cartContents }) => {
           alt={item.title}
         />
         <p>Quantity :{item.quantity}</p>
-        <p>Price: {item.price}</p>
-        <p>Total:{"$" + item.subTotal}</p>
+        <p>Price: {item.price / 100}</p>
+        <p>Total:{"$" + item.subTotal / 100}</p>
       </div>
     );
   });
@@ -23,13 +23,13 @@ const Cart = ({ cartContents }) => {
   cartContents.forEach((element) => {
     calculatedSubtotal += element.subTotal;
   });
-  console.log(calculatedSubtotal + "clst");
+
   return (
     <div className={styles.cartContainer}>
       {cartItems}
-      <p
-        className={styles.cartSubtotal}
-      >{`Subtotal: $${calculatedSubtotal}`}</p>
+      <p className={styles.cartSubtotal}>{`Subtotal: $${
+        calculatedSubtotal / 100
+      }`}</p>
       <button className={styles.checkoutButton} type="button">
         Checkout
       </button>

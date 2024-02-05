@@ -32,10 +32,8 @@ function App() {
     const addedProductInfo = target.children;
     const addedProductTitle = addedProductInfo[1].firstElementChild.innerHTML;
     const addedProductImage = addedProductInfo[0].firstElementChild.src;
-    const unitPrice = addedProductInfo[1].children[1].innerHTML.replace(
-      /[^0-9]/g,
-      ""
-    );
+    const unitPrice =
+      addedProductInfo[1].children[1].innerHTML.replace(/[^0-9.]/g, "") * 100;
     const subTotal = Number(unitPrice) * Number(quantitySelected);
 
     const addedProductObj = {
