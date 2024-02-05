@@ -57,8 +57,6 @@ function App() {
     setCartClicked((prevState) => !prevState);
   }
 
-  console.table(cartContents);
-
   return (
     <>
       <Navbar cartCount={cartCount} handleCartClick={handleCartClick} />
@@ -78,12 +76,6 @@ function App() {
         <Route path="product" element={<ProductPage id={clickedProductId} />} />
       </Routes>
     </>
-
-    // <div className="app-container">
-    //   <Navbar />
-    //   <Home handleClick={(e) => handleClick(e)} />
-    //   {viewProductPage && <ProductPage id={clickedProductId} />}
-    // </div>
   );
 }
 

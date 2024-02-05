@@ -5,12 +5,16 @@ import styles from "../styles/Cart.module.css";
 const Cart = ({ cartContents }) => {
   const cartItems = cartContents.map((item, i) => {
     return (
-      <div key={i}>
+      <div className={styles.cartProductContainer} key={i}>
         <p>{item.title}</p>
-        <img src={item.image} alt={item.title} />
-        <p>{item.quantity}</p>
-        <p>{item.price}</p>
-        <p>{"$" + item.subTotal}</p>
+        <img
+          className={styles.cartProductImage}
+          src={item.image}
+          alt={item.title}
+        />
+        <p>Quantity :{item.quantity}</p>
+        <p>Price: {item.price}</p>
+        <p>Total:{"$" + item.subTotal}</p>
       </div>
     );
   });
@@ -23,7 +27,9 @@ const Cart = ({ cartContents }) => {
   return (
     <div className={styles.cartContainer}>
       {cartItems}
-      <p className={styles.cartSubtotal}>{`Subtotal: ${calculatedSubtotal}`}</p>
+      <p
+        className={styles.cartSubtotal}
+      >{`Subtotal: $${calculatedSubtotal}`}</p>
       <button className={styles.checkoutButton} type="button">
         Checkout
       </button>

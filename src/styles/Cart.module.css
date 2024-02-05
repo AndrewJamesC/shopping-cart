@@ -1,5 +1,5 @@
 .cartContainer {
-  height: 91vh;
+  height: fit-content;
   width: 20vw;
   background-color: white;
   position: fixed;
@@ -32,4 +32,15 @@
   transform: translateY(2px);
   box-shadow: 0 2px #666;
   background-color: #904a429c;
+}
+
+.cartProductImage {
+  width: 30%;
+}
+
+.cartProductContainer {
+  font-size: 20px;
+  width: 80%;
+  box-shadow: 5px 7px 22px -3px rgba(0, 0, 0, 0.53);
+  padding: 20px;
 }
