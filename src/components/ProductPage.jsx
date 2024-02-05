@@ -44,7 +44,7 @@ const ProductPage = ({ id }) => {
 };
 
 ProductPage.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.number,
 };
 
 export default ProductPage;

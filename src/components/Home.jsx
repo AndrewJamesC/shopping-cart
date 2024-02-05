@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styles from "../styles/Home.module.css";
 import headphonesHero from "../assets/images/headphones-hero.png";
 
-const Home = ({ handleClick, increaseCartCount }) => {
+const Home = ({ handleClick, handleAddToCart }) => {
   return (
     <div className={styles.homeContainer}>
       <div className={styles.heroImageContainer}>
@@ -31,8 +31,8 @@ const Home = ({ handleClick, increaseCartCount }) => {
       <h2 className={styles.bestSellers}>Best Sellers</h2>
       <ProductCards
         handleClick={(e) => handleClick(e)}
-        increaseCartCount={(quantitySelected) =>
-          increaseCartCount(quantitySelected)
+        handleAddToCart={(e, quantitySelected) =>
+          handleAddToCart(e, quantitySelected)
         }
       />
     </div>
@@ -41,7 +41,7 @@ const Home = ({ handleClick, increaseCartCount }) => {
 
 Home.propTypes = {
   handleClick: PropTypes.func,
-  increaseCartCount: PropTypes.func,
+  handleAddToCart: PropTypes.func,
 };
 
 export default Home;

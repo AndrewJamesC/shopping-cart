@@ -40,7 +40,7 @@ const ProductCard = (props) => {
         <button
           className={styles.addToCartBtn}
           type="button"
-          onClick={() => props.increaseCartCount(quantitySelected)}
+          onClick={(e) => props.handleAddToCart(e, quantitySelected)}
         >
           Add to cart
         </button>
@@ -55,7 +55,7 @@ ProductCard.propTypes = {
   price: PropTypes.number,
   id: PropTypes.number,
   handleClick: PropTypes.func,
-  increaseCartCount: PropTypes.func,
+  handleAddToCart: PropTypes.func,
 };
 
 export default ProductCard;

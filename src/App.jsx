@@ -7,9 +7,11 @@ import Cart from "./components/Cart";
 import "./App.css";
 
 function App() {
-  const [clickedProductId, setClickedProductId] = useState("");
+  const [clickedProductId, setClickedProductId] = useState();
   const [cartCount, setCartCount] = useState(0);
+  const [cartContents, setCartContents] = useState([]);
   const [cartClicked, setCartClicked] = useState(false);
+  // const [productIdAddToCart, SetProductIdAddToCart] = useState("");
 
   function handleClick(e) {
     if (e.target.tagName === "INPUT" || e.target.tagName === "BUTTON") {
@@ -19,31 +21,56 @@ function App() {
     while (!target.id) {
       target = target.parentNode;
     }
-
-    setClickedProductId(target.id);
+    setClickedProductId(Number(target.id));
   }
 
-  function increaseCartCount(quantitySelected) {
-    console.log("app " + quantitySelected);
+  const handleAddToCart = (e, quantitySelected) => {
+    let target = e.target;
+    while (!target.id) {
+      target = target.parentNode;
+    }
+    const addedProductInfo = target.children;
+    const addedProductTitle = addedProductInfo[1].firstElementChild.innerHTML;
+    const addedProductImage = addedProductInfo[0].firstElementChild.src;
+    const unitPrice = addedProductInfo[1].children[1].innerHTML.replace(
+      /[^0-9]/g,
+      ""
+    );
+    const subTotal = Number(unitPrice) * Number(quantitySelected);
+
+    const addedProductObj = {
+      title: addedProductTitle,
+      image: addedProductImage,
+      quantity: quantitySelected,
+      price: unitPrice,
+      subTotal: subTotal,
+    };
+    setCartContents((prevCart) => {
+      return [...prevCart, addedProductObj];
+    });
+    console.log(cartContents);
+
     setCartCount((prevCount) => prevCount + Number(quantitySelected));
-    console.log(cartCount + " cart count");
-  }
+  };
 
   function handleCartClick() {
     setCartClicked((prevState) => !prevState);
   }
+
+  console.table(cartContents);
+
   return (
     <>
       <Navbar cartCount={cartCount} handleCartClick={handleCartClick} />
-      {cartClicked && <Cart />}
+      {cartClicked && <Cart cartContents={cartContents} />}
       <Routes>
         <Route
           path="/"
           element={
             <Home
               handleClick={(e) => handleClick(e)}
-              increaseCartCount={(quantitySelected) =>
-                increaseCartCount(quantitySelected)
+              handleAddToCart={(e, quantitySelected) =>
+                handleAddToCart(e, quantitySelected)
               }
             />
           }
