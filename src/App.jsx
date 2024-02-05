@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import ProductPage from "./components/ProductPage";
 import Cart from "./components/Cart";
+import { v4 as uuid } from "uuid";
 import "./App.css";
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
       quantity: quantitySelected,
       price: unitPrice,
       subTotal: subTotal,
+      id: uuid(),
     };
     setCartContents((prevCart) => {
       return [...prevCart, addedProductObj];
@@ -59,10 +61,24 @@ function App() {
     setCartClicked((prevState) => !prevState);
   }
 
+  function deleteItem(e) {
+    console.log(e.target.parentNode.id);
+
+    function findObjectById(array, id) {
+      return array.find((obj) => obj.id === id);
+    }
+    const id = e.target.parentNode.id;
+    const found = findObjectById(cartContents, id);
+    const tempCart = cartContents.filter((item) => item !== found);
+    setCartContents(tempCart);
+  }
+
   return (
     <>
       <Navbar cartCount={cartCount} handleCartClick={handleCartClick} />
-      {cartClicked && <Cart cartContents={cartContents} />}
+      {cartClicked && (
+        <Cart cartContents={cartContents} deleteItem={(e) => deleteItem(e)} />
+      )}
       <Routes>
         <Route
           path="/"
